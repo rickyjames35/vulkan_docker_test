@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  vulkan-docker-test-build:
+    image: vulkan-docker-test
+    container_name: vulkan-docker-test
+    runtime: nvidia # Needed to share GPU
+    build:
+      context: . # Everything the Dockerfile has access to shall be under the current working directory of the Dockerfile
+      dockerfile: Dockerfile # When you bring the docker container up it will be based off of the local Dockerfile
+    environment:
+      - DISPLAY # Needed to share GPU
+      - NVIDIA_DRIVER_CAPABILITIES=all # Needed to share GPU
+      - NVIDIA_VISIBLE_DEVICES=all # Needed to share GPU
+    network_mode: "host" #  Needed to share GPU
+    tty: true
+    command: sh -c "nvidia-smi && lspci | grep ' VGA ' && vulkaninfo --summary && vkcube"
