@@ -16,7 +16,6 @@ services:
           devices:
             - driver: nvidia
               capabilities: [gpu]
-    privileged: true
     network_mode: "host" #  Needed to share GPU
     tty: true
     command: sh -c "nvidia-smi && lspci | grep ' VGA ' && vulkaninfo --summary && vkcube"
