@@ -4,4 +4,5 @@ RUN apt-get update && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y install \
     pciutils \
-    vulkan-tools
+    vulkan-tools \
+    mesa-utils
