@@ -1,14 +1,8 @@
 services:
-  vulkan-docker-test-build:
-    image: vulkan-docker-test
-    container_name: vulkan-docker-test
-    build:
-      context: . # Everything the Dockerfile has access to shall be under the current working directory of the Dockerfile
-      dockerfile: Dockerfile # When you bring the docker container up it will be based off of the local Dockerfile
+  vulkan-docker-test:
+    build: .
     environment:
       - DISPLAY # Needed to share GPU
-      - NVIDIA_DRIVER_CAPABILITIES=all # Needed to share GPU
-      - NVIDIA_VISIBLE_DEVICES=all # Needed to share GPU
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix # Needed to share GPU
     runtime: nvidia # Needed to share GPU
