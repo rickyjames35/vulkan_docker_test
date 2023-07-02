@@ -10,7 +10,7 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=all # Needed to share GPU
       - NVIDIA_VISIBLE_DEVICES=all # Needed to share GPU
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    runtime: nvidia
+      - /tmp/.X11-unix:/tmp/.X11-unix # Needed to share GPU
+    runtime: nvidia # Needed to share GPU
     # tty: true
     command: sh -c "nvidia-smi && lspci | grep ' VGA ' && vulkaninfo --summary && vkcube"
